@@ -10,13 +10,15 @@ var http    = require('http'),
 
 var ccUrl = process.argv[2] || 'http://localhost:4444/sample.xml',
     port  = parseInt(process.argv[3] || 4444, 10),
+    username = process.argv[4] || null,
+    password = process.argv[5] || null,
     pollInterval = 3000,
     state = {
       status: 'pending',
       projects: [],
       lastUpdate: null
     },
-    server = express.createServer();
+    server = express();
 
 server.get('/cc.json', function(req, res){
   res.header('Content-Type', 'application/json');
@@ -37,8 +39,7 @@ var poll = function(){
     }
   };
 
-  var request = restler.get(ccUrl);
-
+  var request = restler.get(ccUrl,{username:username,password:password});
   request.on('success', function(data) {
     parser.write(data + '');
     parser.close();
@@ -49,8 +50,8 @@ var poll = function(){
     state.lastUpdate = new Date();
     setTimeout(poll, pollInterval);
   });
-
-  request.on('error', function(){
+  request.on('error', function(error){
+    console.log(error);
     state.status = 'error';
     setTimeout(poll, pollInterval);
   });

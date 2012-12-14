@@ -1,8 +1,16 @@
+                                   
+@font-face {
+    font-family: 'Carrosserie-Regular';
+    src: url('http://cdn.shopify.com/s/files/1/0119/9842/t/4/assets/style_176225.eot?#iefix') format('embedded-opentype'),
+         url('http://cdn.shopify.com/s/files/1/0119/9842/t/4/assets/style_176225.woff') format('woff'),
+         url('http://cdn.shopify.com/s/files/1/0119/9842/t/4/assets/style_176225.ttf') format('truetype'),
+         url('http://cdn.shopify.com/s/files/1/0119/9842/t/4/assets/style_176225.svg#Carrosserie-Regular') format('svg');
+}
 html {
   background-color: black;
   color: white;
   height: 100%;
-  font-family: "Liberation Sans", "Nimbus Sans", "Helvetica", sans-serif;
+  font-family: "Carrosserie-Regular", "Liberation Sans", "Nimbus Sans", "Helvetica", sans-serif;
   font-size: 140px;
   overflow: hidden;
 }
