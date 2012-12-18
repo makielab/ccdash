@@ -1,0 +1,21 @@
+{
+  "name": "ccdash",
+  "preferGlobal": "false",
+  "version": "0.0.1",
+  "description": "A simple dashboard for your build machine. Works with CruiseControl, Hudson, and anything else that exposes its status using the cctray XML format.",
+  "contributors": [
+    {
+      "name": "Paul Battley",
+      "email": "pbattley@gmail.com"
+    }
+  ],
+  "dependencies" : {
+    "express"  :  "3.0.x",
+    "restler"  :  "2.0.x",
+    "sax"      :  "0.4.x",
+    "socket.io":  "0.9.x"
+  },
+  "engines": {
+    "node": ">=0.6"
+  }
+}
