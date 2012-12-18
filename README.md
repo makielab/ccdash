@@ -21,11 +21,9 @@ Prerequisites
 * [express](https://expressjs.com/)
 * [sax](https://github.com/isaacs/sax-js)
 * [restler](https://github.com/danwrong/restler)
+* [socket.io](http://socket.io/)
 
-You might find [npm](http://npmjs.org/) helpful. If you have npm installed
-already, you can install the other dependencies via make:
-
-    make deps
+	npm install
 
 Browsers
 --------

@@ -18,16 +18,22 @@ var ccUrl = process.argv[2] || 'http://localhost:4444/sample.xml',
       projects: [],
       lastUpdate: null
     },
-    server = express();
+    app = express(),
+    server = http.createServer(app),
+    io = require('socket.io').listen(server);
 
-server.get('/cc.json', function(req, res){
+app.get('/cc.json', function(req, res){
   res.header('Content-Type', 'application/json');
   res.send(JSON.stringify(state));
 });
 
-server.use(express['static'](__dirname + '/public'));
-server.use(express.errorHandler({showStack: true, dumpExceptions: true}));
+app.use(express['static'](__dirname + '/public'));
+app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
 server.listen(port);
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('ccjson', state);
+});
 
 var poll = function(){
   var parser = sax.parser(/* strict = */ true),
@@ -43,16 +49,22 @@ var poll = function(){
   request.on('success', function(data) {
     parser.write(data + '');
     parser.close();
-    state.projects = nodes.map(function(e){
+    projects = nodes.map(function(e){
       e.name = e.name.replace(/_/g, ' '); return e;
     });
-    state.status = 'success';
-    state.lastUpdate = new Date();
+    if (state.status !== 'success' || JSON.stringify(state.projects) != JSON.stringify(projects)) {
+      state.projects = projects;
+      state.status = 'success';
+      state.lastUpdate = new Date();
+      io.sockets.emit('ccjson', state);
+    }
     setTimeout(poll, pollInterval);
   });
   request.on('error', function(error){
-    console.log(error);
-    state.status = 'error';
+    if (state.status !== 'error') {
+      state.status = 'error';
+      io.sockets.emit('ccjson', state);
+    }
     setTimeout(poll, pollInterval);
   });
 };
