@@ -22,6 +22,8 @@ var ccUrl = process.argv[2] || 'http://localhost:4444/sample.xml',
     server = http.createServer(app),
     io = require('socket.io').listen(server);
 
+io.set('log level', 1); // reduce logging
+
 app.get('/cc.json', function(req, res){
   res.header('Content-Type', 'application/json');
   res.send(JSON.stringify(state));
