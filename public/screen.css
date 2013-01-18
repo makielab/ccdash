@@ -45,6 +45,7 @@ li {
   background: #900 url(skull.png) no-repeat right center;
   -moz-background-size: contain;
   background-size: contain;
+  padding-right: 1.4em;
 }
 @-webkit-keyframes green-throb {
   50% { background-color: #0d0; }
