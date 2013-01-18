@@ -42,10 +42,9 @@ li {
   background-color: #070;
 }
 .Failure {
-  background: #900 url(skull.png) no-repeat;
+  background: #900 url(skull.png) no-repeat right center;
   -moz-background-size: contain;
   background-size: contain;
-  padding-left: 1.4em;
 }
 @-webkit-keyframes green-throb {
   50% { background-color: #0d0; }
