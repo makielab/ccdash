@@ -61,8 +61,15 @@ var poll = function(){
       io.sockets.emit('ccjson', state);
     }
     setTimeout(poll, pollInterval);
-  });
-  request.on('error', function(error){
+  }).on('error', function(error){
+    console.error(error);
+    if (state.status !== 'error') {
+      state.status = 'error';
+      io.sockets.emit('ccjson', state);
+    }
+    setTimeout(poll, pollInterval);
+  }).on('fail', function(error){
+    console.error(error);
     if (state.status !== 'error') {
       state.status = 'error';
       io.sockets.emit('ccjson', state);
