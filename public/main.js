@@ -106,6 +106,22 @@ $(document).ready(function(){
           setHealth(false);
         });
 
+  var events = [];
+  var events_template = new Template('event_template');
+  var pusher = new Pusher(PUSHER_API_KEY);
+  var channel = pusher.subscribe('build_events');
+  var show_event = function(varname) {
+    return function(data) {
+     var ctx = {when: new Date()};
+     ctx[varname] = data;
+     events.unshift(ctx);
+     events = events.slice(-10);
+     events_template.render({events: events });
+    };
+  };
+  channel.bind('image', show_event("img"));
+  channel.bind('text', show_event("text"));
+
   $(window).bind('resize', function (){
     $('#cc').css('font-size', startFontSize);
     template.render({projects: lastProjects});

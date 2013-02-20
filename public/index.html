@@ -8,9 +8,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="//github.com/janl/mustache.js/raw/0.3.0/mustache.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="//js.pusher.com/1.12/pusher.min.js"></script>
     <script src="/main.js"></script>
   </head>
   <body>
+    <div style="float:left; width:60%">
     <ul id="cc">
       <script id="projects_template" type="text/html">
         {{#projects}}
@@ -20,6 +22,29 @@
         {{/projects}}
       </script>
     </ul>
+    </div>
+    <div style="float:right; width:30%">
+        <ul>
+        <script id="event_template" type="text/html">
+          {{#events}}
+          <li class="event">
+            {{#img}}
+            <img width="100" src="{{img}}"/>
+            {{/img}}
+            {{#text}}
+            <p>{{text}}</p>
+            {{/text}}
+            <p class="when">
+            {{when}}
+            </p>
+          </li>
+          {{/events}}
+        </script>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      var PUSHER_API_KEY = 'b3cbfa83ad31ecdeec0a';
+    </script>
     <footer>
       <p id="updated">Last updated: <span>Never</span></p>
       <p id="status">Status: <span>Loaded</span></p>

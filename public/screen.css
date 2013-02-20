@@ -35,9 +35,20 @@ li {
   margin: 0 0.2em 0.2em 0;
   -moz-border-radius: 0.15em;
   border-radius: 0.15em;
-  float: left;
   border: 0.05em solid transparent;
 }
+li.event {
+  font-size: 30px;
+  background-color: #444;
+  color: #fff;
+  margin-right: 0 auto;
+}
+
+li.event p.when {
+  font-size: 20px;
+  color: #888;
+}
+
 .Success {
   background-color: #070;
 }
