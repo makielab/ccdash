@@ -61,9 +61,9 @@ $(document).ready(function(){
   };
 
   var render = function() {
-    var groupings = ["makie.me-iconserver", "makie.me dollbuilder", "dollfactory","shedgame","makielab.com","makie.me","misc"];
-    var names = ["iconserver","dollbuilder","dollfactory","shedgame","makielab.com","makie.me","misc"];
-    var replace = ["makie.me-iconserver-", "makie.me dollbuilder ", "dollfactory ", "shedgame-", "makielab.com ", "makie.me ", ""];
+    var groupings = ["makie.me-iconserver", "makie.me dollbuilder", "dollfactory","shedgame","makielab.com","makie.me","landertest", "misc"];
+    var names = ["iconserver","dollbuilder","dollfactory","shedgame","makielab.com","makie.me","lander", "misc"];
+    var replace = ["makie.me-iconserver-", "makie.me dollbuilder ", "dollfactory ", "shedgame-", "makielab.com ", "makie.me ", "landertest ", ""];
     var groups = $.map(groupings, function(el, i) {
       return { prefix: el, name: names[i], replace: replace[i], projects: [] };
     });
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
   var shrinkToFit = function(){
     var fontSize =  parseInt($('#cc').css('font-size'), 10);
-        lastItem = $('#cc li:last-child');
+        lastItem = $('#cc li:last-child ul li:last-child');
 
     if (fontSize < 20 || lastItem.length < 1) {
       setVisibility(1);

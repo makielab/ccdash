@@ -14,12 +14,16 @@
     <ul id="cc">
       <script id="projects_template" type="text/html">
         {{#groups}}
-        <li class="header" style="clear:left; margin-bottom: 70px">{{name}}</li>
+        <li class="header" style="clear:left; font-size: 70%">{{name}}</li>
+        <li style="clear:left; margin-bottom: 0.5em">
+        <ul>
         {{#projects}}
           <li class="{{lastBuildStatus}} {{activity}}">
             <p>{{name}}</p>
           </li>
         {{/projects}}
+        </ul>
+        </li>
         {{/groups}}
       </script>
     </ul>
