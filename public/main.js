@@ -61,26 +61,27 @@ $(document).ready(function(){
   };
 
   var render = function() {
-    var groupings = ["makie.me-iconserver", "makie.me dollbuilder", "dollfactory","shedgame","makielab.com","makie.me","landertest", "misc"];
-    var names = ["iconserver","dollbuilder","dollfactory","shedgame","makielab.com","makie.me","lander", "misc"];
-    var replace = ["makie.me-iconserver-", "makie.me dollbuilder ", "dollfactory ", "shedgame-", "makielab.com ", "makie.me ", "landertest ", ""];
+    var groupings = ["makie.me iconserver", "makie.me dollbuilder", "dollfactory", "shedgame", "makielab.com", "makie.me", "landertest", "misc"];
+    var names = ["iconserver", "dollbuilder", "dollfactory", "shedgame", "makielab.com", "makie.me", "lander", "misc"];
+    var replace = ["makie.me iconserver ", "makie.me dollbuilder ", "dollfactory ", "shedgame ", "makielab.com ", "makie.me ", "landertest ", ""];
     var groups = $.map(groupings, function(el, i) {
-      return { prefix: el, name: names[i], replace: replace[i], projects: [] };
+      return { prefix: el.toLowerCase(), name: names[i], replace: replace[i].toLowerCase(), projects: [] };
     });
     $('#cc').css('font-size', startFontSize);
     $.each(lastProjects, function(i, p) {
+       var name = p.name.toLowerCase().replace(/[_-]/g, " ");
        $.each(groups, function(i, g) {
-          if (p.name.toLowerCase().indexOf(g.prefix.toLowerCase()) == 0 || i == groups.length - 1) {
+          if (name.indexOf(g.prefix) === 0 || i == groups.length - 1) {
             var proj = $.extend({}, p);
-            proj.name = p.name.toLowerCase().replace(g.replace.toLowerCase(),""); 
+            proj.name = name.replace(g.replace,"");
             g.projects.push(proj);
             return false;
           }
-       }); 
+       });
     });
     template.render({groups: groups});
     shrinkToFit();
-  }
+  };
 
   var shrinkToFit = function(){
     var fontSize =  parseInt($('#cc').css('font-size'), 10);
