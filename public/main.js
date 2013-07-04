@@ -61,9 +61,9 @@ $(document).ready(function(){
   };
 
   var render = function() {
-    var groupings = ["makie.me iconserver", "makie.me dollbuilder", "dollfactory", "shedgame", "makielab.com", "makie.me", "landertest", "misc"];
-    var names = ["iconserver", "dollbuilder", "dollfactory", "shedgame", "makielab.com", "makie.me", "lander", "misc"];
-    var replace = ["makie.me iconserver ", "makie.me dollbuilder ", "dollfactory ", "shedgame ", "makielab.com ", "makie.me ", "landertest ", ""];
+    var groupings = ["dollfactory", "shedgame", "makielab.com", "makie.me", "landertest", "misc"];
+    var names = ["dollfactory", "shedgame", "makielab.com", "makie.me", "lander", "misc"];
+    var replace = ["dollfactory ", "shedgame ", "makielab.com ", "makie.me ", "landertest ", ""];
     var groups = $.map(groupings, function(el, i) {
       return { prefix: el.toLowerCase(), name: names[i], replace: replace[i].toLowerCase(), projects: [] };
     });
