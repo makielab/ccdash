@@ -61,9 +61,9 @@ $(document).ready(function(){
   };
 
   var render = function() {
-    var groupings = ["dollfactory", "shedgame", "makie.me", "dressup", "misc"];
-    var names = ["dollfactory", "shedgame", "mymakie.com", "dressup", "misc"];
-    var replace = ["dollfactory ", "shedgame ", "makie.me ", "dressup ", ""];
+    var groupings = ["dollfactory", "shedgame", "makie.me", "dressup", "shop", "misc"];
+    var names = ["dollfactory", "shedgame", "mymakie.com", "dressup", "shop", "misc"];
+    var replace = ["dollfactory ", "shedgame ", "makie.me ", "dressup ", "shop ", ""];
     var groups = $.map(groupings, function(el, i) {
       return { prefix: el.toLowerCase(), name: names[i], replace: replace[i].toLowerCase(), projects: [] };
     });
